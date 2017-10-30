@@ -48,7 +48,9 @@ fun_plot <- function(dat_box=tm, y_lim = c(10, 50000)){
                                 "base R\nin memory\n(variation 1)", 
                                 "base R\nin memory\n(variation 2)")) +
     theme_tufte(ticks = F) + 
-    theme(axis.text.x = element_text(size=12))
+    theme(axis.text.x = element_text(size=12)) +
+    labs(caption = '@rikunert') + 
+    theme(plot.caption = element_text(size = 10, color = 'grey', face= 'italic'))
   A
   
 }
@@ -73,7 +75,7 @@ fun_base2 <- function(data = iris) by(data$Petal.Length, data$Species, mean)
 
 tm = microbenchmark(fun_disk(query), fun_mem(query), fun_base1(), fun_base2())
 
-fun_plot(dat_box = tm) + ggtitle('Basic aggregation')
+fun_plot(dat_box = tm) + ggtitle('Basic aggregation & grouping')
 ggsave('SQL_R_bench_2.png',width = 12.9, height = 5.42, scale = 0.7, dpi = 1000)
 
 dbGetQuery(db_mem, query)
