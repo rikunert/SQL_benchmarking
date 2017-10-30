@@ -222,7 +222,7 @@ fun_base2 <- function(data1 = iris, data2 = flowers) {
 
 tm = microbenchmark(fun_disk(query), fun_mem(query), fun_base1(), fun_base2())
 
-fun_plot(dat_box = tm) + ggtitle('Joining two tables and aggregation')
+fun_plot(dat_box = tm) + ggtitle('Joining two tables, aggregation, grouping')
 ggsave('SQL_R_bench_7.png',width = 12.9, height = 5.42, scale = 0.7, dpi = 1000)
 
 dbGetQuery(db_disk, query)
